@@ -9,23 +9,12 @@ export default function Google() {
   );
 
   return (
-    <>
-      <div>
-        <div>
-          <title>Google認証画面</title>
-          <link rel="icon" href="/favicon.ico" />
-        </div>
-        <main>
-          <div>
-            <Auth
-              supabaseClient={supabase}
-              appearance={{ theme: ThemeSupa }}
-              providers={["google"]}
-            />
-          </div>
-        </main>
-        <footer></footer>
-      </div>
-    </>
+    <Auth
+      supabaseClient={supabase}
+      appearance={{ theme: ThemeSupa }}
+      providers={["google"]}
+      onlyThirdPartyProviders
+      redirectTo={import.meta.env.VITE_LOGIN_REDIRECT_URL}
+    />
   );
 }
