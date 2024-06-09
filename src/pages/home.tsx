@@ -1,6 +1,5 @@
 import { Session, SupabaseClient } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { PermissionDenied } from "../components/permissionDenied";
 
 interface Props {
