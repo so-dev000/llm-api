@@ -8,7 +8,6 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "lint-staged": "lint-staged",
     "tsc":"npx tsc",
     "prepare": "husky install"
   },
@@ -40,7 +39,6 @@
     "eslint-plugin-react-refresh": "^0.4.6",
     "globals": "^15.4.0",
     "husky": "^8.0.0",
-    "lint-staged": "15.2.5",
     "prettier": "3.3.1",
     "typescript": "^5.2.2",
     "typescript-eslint": "^7.12.0",
@@ -48,14 +46,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && npm run tsc ",
-      "pre-push": "npm run lint && npm run tsc"
+      "pre-commit": "npm run tsc"
     }
-  },
-  "lint-staged": {
-    "**/*.{tsx,ts}": [
-      "prettier --write",
-      "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
-    ]
   }
 }
