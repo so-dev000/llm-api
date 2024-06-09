@@ -1,6 +1,7 @@
 import { Session, SupabaseClient } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { PermissionDenied } from "../components/permissionDenied";
 
 interface Props {
   supabase: SupabaseClient;
@@ -8,7 +9,6 @@ interface Props {
 export const HomePage = (props: Props) => {
   const { supabase } = props;
   const [session, setSession] = useState<Session>();
-  const navigate = useNavigate();
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -25,7 +25,7 @@ export const HomePage = (props: Props) => {
   }, [supabase.auth]);
 
   if (!session) {
-    return <div onClick={() => navigate("/")}>ログインページへ</div>;
+    return <PermissionDenied></PermissionDenied>;
   } else {
     return <div>home</div>;
   }
