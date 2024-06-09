@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LLM } from "../../types/types";
 import { SideMenu } from "./sidemenu";
-import { Divider, Skeleton } from "@mui/material";
+import { Divider } from "@mui/material";
 interface Props {
   supabase: SupabaseClient;
 }
