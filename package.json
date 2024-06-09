@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint-staged": "lint-staged",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@emotion/css": "^11.11.2",
@@ -36,5 +38,17 @@
     "prettier": "3.3.1",
     "typescript": "^5.2.2",
     "vite": "^5.2.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run lint"
+    }
+  },
+  "lint-staged": {
+    "**/*.{tsx,ts}": [
+      "prettier --write",
+      "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
+    ]
   }
 }
