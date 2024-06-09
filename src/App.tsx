@@ -4,6 +4,7 @@ import { LoginPage } from "./pages/loginPage";
 import { HomePage } from "./pages/homePage";
 import { createClient } from "@supabase/supabase-js";
 import { NotFound } from "./pages/notFound";
+import { PermissionDenied } from "./components/permissionDenied";
 
 function App() {
   const supabase = createClient(
@@ -20,6 +21,10 @@ function App() {
       <Route
         path="/home"
         element={<HomePage supabase={supabase}></HomePage>}
+      ></Route>
+      <Route
+        path="/permission-denied"
+        element={<PermissionDenied></PermissionDenied>}
       ></Route>
       <Route path="*" element={<NotFound></NotFound>}></Route>
     </Routes>
