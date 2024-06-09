@@ -9,7 +9,6 @@ interface Props {
   setSelectedLLM: React.Dispatch<SetStateAction<LLM>>;
   supabase: SupabaseClient;
 }
-
 export const SideMenu = (props: Props) => {
   const { selectedLLM, setSelectedLLM, supabase } = props;
   const navigate = useNavigate();
