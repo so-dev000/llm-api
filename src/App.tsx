@@ -3,6 +3,7 @@ import "./App.css";
 import { LoginPage } from "./pages/loginPage";
 import { HomePage } from "./pages/homePage";
 import { createClient } from "@supabase/supabase-js";
+import { NotFound } from "./pages/notFound";
 
 function App() {
   const supabase = createClient(
@@ -20,6 +21,7 @@ function App() {
         path="/home"
         element={<HomePage supabase={supabase}></HomePage>}
       ></Route>
+      <Route path="*" element={<NotFound></NotFound>}></Route>
     </Routes>
   );
 }
