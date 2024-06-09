@@ -47,14 +47,15 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && npx run tsc",
-      "pre-push": "npm run lint&& npx run tsc"
+      "pre-commit": "lint-staged ",
+      "pre-push": "npm run lint"
     }
   },
   "lint-staged": {
     "**/*.{tsx,ts}": [
       "prettier --write",
-      "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
+      "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+      "npx tsc"
     ]
   }
 }
