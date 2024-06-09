@@ -15,6 +15,8 @@ export const LoginPage = (props: Props) => {
         appearance={{ theme: ThemeSupa }}
         providers={["google"]}
         onlyThirdPartyProviders
+        magicLink={false}
+        showLinks={false}
         redirectTo={import.meta.env.VITE_LOGIN_REDIRECT_URL}
       />
     </>
