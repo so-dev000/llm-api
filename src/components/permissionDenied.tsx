@@ -6,8 +6,8 @@ export const PermissionDenied = () => {
 
   return (
     <div css={containerStyle}>
-      <h1>アクセス拒否</h1>
-      <div onClick={() => navigate("/")}>ログインページへ</div>;
+      <h1>Permission Denied</h1>
+      <button onClick={() => navigate("/")}>Go Back to Login Page</button>
     </div>
   );
 };

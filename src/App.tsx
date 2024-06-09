@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { LoginPage } from "./pages/login";
-import { HomePage } from "./pages/home";
+import { LoginPage } from "./pages/loginPage";
+import { HomePage } from "./pages/homePage";
 import { createClient } from "@supabase/supabase-js";
 
 function App() {

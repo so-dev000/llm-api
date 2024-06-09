@@ -1,31 +1,36 @@
-import { Session, SupabaseClient } from "@supabase/supabase-js";
+import { SupabaseClient } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 import { PermissionDenied } from "../components/permissionDenied";
+import { Home } from "../components/home";
 
 interface Props {
   supabase: SupabaseClient;
 }
+
+type LoginState = "inprogress" | "success" | "denied";
 export const HomePage = (props: Props) => {
   const { supabase } = props;
-  const [session, setSession] = useState<Session>();
+  const [loginState, setLoginState] = useState<LoginState>();
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
-      session && setSession(session);
+      session ? setLoginState("success") : setLoginState("denied");
     });
 
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
-      session && setSession(session);
+      session ? setLoginState("success") : setLoginState("denied");
     });
 
     return () => subscription.unsubscribe();
-  }, [supabase.auth]);
+  }, []);
 
-  if (!session) {
+  if (loginState == "denied") {
     return <PermissionDenied></PermissionDenied>;
+  } else if (loginState == "success") {
+    return <Home supabase={supabase}></Home>;
   } else {
-    return <div>home</div>;
+    return <></>;
   }
 };
