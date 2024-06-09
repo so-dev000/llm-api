@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { SupabaseClient } from "@supabase/supabase-js";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 interface Props {
   supabase: SupabaseClient;
@@ -9,14 +9,14 @@ interface Props {
 export const Home = (props: Props) => {
   const { supabase } = props;
   const navigate = useNavigate();
-  const validateToken = async () => {
+  const verifyToken = useCallback(async () => {
     const { error } = await supabase.auth.getUser();
     if (error) {
       supabase.auth.signOut().then(() => navigate("/permission-denied"));
     }
-  };
+  }, []);
   useEffect(() => {
-    validateToken();
+    verifyToken();
   }, []);
   return (
     <div css={containerStyle}>
