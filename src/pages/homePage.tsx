@@ -1,6 +1,6 @@
 import { SupabaseClient } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
-import { Home } from "../components/home";
+import { Home } from "../components/base/home";
 import { useNavigate } from "react-router-dom";
 
 interface Props {

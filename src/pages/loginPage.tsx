@@ -8,17 +8,23 @@ interface Props {
 export const LoginPage = (props: Props) => {
   const { supabase } = props;
   return (
-    <>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
       <h1>LLM API</h1>
-      <Auth
-        supabaseClient={supabase}
-        appearance={{ theme: ThemeSupa }}
-        providers={["google"]}
-        onlyThirdPartyProviders
-        magicLink={false}
-        showLinks={false}
-        redirectTo={import.meta.env.VITE_LOGIN_REDIRECT_URL}
-      />
-    </>
+      <div style={{ width: "20%" }}>
+        <Auth
+          supabaseClient={supabase}
+          appearance={{ theme: ThemeSupa }}
+          providers={["google"]}
+          onlyThirdPartyProviders
+          redirectTo={import.meta.env.VITE_LOGIN_REDIRECT_URL}
+        />
+      </div>
+    </div>
   );
 };

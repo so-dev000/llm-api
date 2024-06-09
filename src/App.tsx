@@ -4,7 +4,7 @@ import { LoginPage } from "./pages/loginPage";
 import { HomePage } from "./pages/homePage";
 import { createClient } from "@supabase/supabase-js";
 import { NotFound } from "./pages/notFound";
-import { PermissionDenied } from "./components/permissionDenied";
+import { PermissionDenied } from "./components/base/permissionDenied";
 
 function App() {
   const supabase = createClient(
